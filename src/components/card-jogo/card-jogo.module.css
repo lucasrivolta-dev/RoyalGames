@@ -4,4 +4,55 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 10px 10px 10px #221C2D ;
+    font-family: var(--font-titulo);
+    text-align: center;
+    height: 400px;
+}
+
+.img_jogo {
+    width: 100%;
+    height: 14vh;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+}
+
+.titulo_jogo{
+    background: #221C2D;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: var(--font-titulo);
+    margin: 0;
+    align-content: center;
+}
+
+.linkDetalhes{
+    color: white;
+    font-size : 14px;
+    margin: 0;
+    text-decoration: none;
+    padding: 10px 25px;
+    background: var(--vermelho);
+    border-radius: 5px;
+}
+
+.campo_itens{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.valor_jogo{
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-titulo);
+}
+
+.card_jogo{
+    border: 2px solid rgba(221, 221, 221, 0.5);
+    padding: 20px;
+    height: 24vh;
 }
