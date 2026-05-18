@@ -29,7 +29,6 @@ const Home = () => {
                             alt="Banner de jogos"
                             className={styles.img_banner}
                         />
-
                     </div>
                 </section>
                 <div className={styles.cabecalho_jogos}>
