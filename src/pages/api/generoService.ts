@@ -1,8 +1,8 @@
 import { api } from "./api";
 
-export async function cadastrarCategoria(nome: string) {
+export async function cadastrarGenero(nome: string) {
     try {
-        await api.post("Categoria", { nome });
+        await api.post("Genero", { nome });
         // console.log("eba deu certo 🤗")
     } catch (error: any) {
         // console.log(error.response.data)
@@ -10,9 +10,9 @@ export async function cadastrarCategoria(nome: string) {
     }
 }
 
-export async function listarCategoria() {
+export async function listarGenero() {
     try {
-        const response = await api.get("Categoria");
+        const response = await api.get("Genero");
         return response;
     } catch (error: any) {
         throw new Error(error.response.data);

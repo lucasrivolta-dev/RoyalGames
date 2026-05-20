@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiLocal = "https://localhost:7057/api/";
+const apiLocal = "https://localhost:7271/api/";
 
 const apiRemota = "";
 
@@ -13,7 +13,7 @@ export const api = axios.create({
 // É um interceptor do Axios
 // Ele intercepta (pega) toda requisição antes de ser enviada
 api.interceptors.request.use((config) => {
-    const token = secureLocalStorage.getItem("Token");
+    const token = localStorage.getItem("Token");
 
     if(token){
         config.headers.Authorization = "Bearer " + token;

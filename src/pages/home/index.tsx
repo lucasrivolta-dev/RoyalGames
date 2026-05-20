@@ -2,6 +2,7 @@ import Header from "@/components/header/header";
 import styles from "./home.module.css";
 import CardJogo from "@/components/card-jogo/card-jogo";
 import Footer from "@/components/footer/footer";
+import ListaJogo from "@/components/lista-jogo/lista-jogo";
 
 const Home = () => {
     return (
@@ -36,31 +37,9 @@ const Home = () => {
                         <hr className={styles.linha_jogos}/>
                 </div>
 
-                <div className={styles.aba_pesquisar}>
-                        <input className={styles.pesquisar_botao} type="search" name="q" placeholder="Pesquise..." required/>
-                        <button type="submit" name="ordem" value="menor_preco" className={styles.menor_preco_botao}>
-                            Menor Preço
-                        </button>
-                        <select name="categoria" className={styles.categoria_botao}>
-                            <option value="Categoria">Categoria</option>
-                            <option value="acao">Ação / Aventura</option>
-                            <option value="rpg">RPG</option>
-                            <option value="esportes">Esportes / Corrida</option>
-                            <option value="estrategia">Estratégia</option>
-                            <option value="terror">Terror / Sobrevivência</option>
-                        </select>
-                </div>
-
                 <section className={styles.lista_jogos}>
                     <div className={`${styles.container_catalogo} layout_guide`}>
-                        <CardJogo/>
-                        <CardJogo/>
-                        <CardJogo/>
-                    </div>
-                    <div className={`${styles.container_catalogo} layout_guide`}>
-                        <CardJogo/>
-                        <CardJogo />
-                        <CardJogo />
+                        <ListaJogo />
                     </div>
 
                     <div className={styles.area_paginacao}>

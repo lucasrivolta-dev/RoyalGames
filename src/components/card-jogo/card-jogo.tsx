@@ -4,34 +4,52 @@ import Link from "next/link";
 
 type Jogo ={
     titulo: string;
-    descricao: string;
     img: string;
     preco: number,
     jogoId: number,
-    onDelete: (jogoId: number) => void,
-    estaLogado: boolean
+    onDelete?: (jogoId: number) => void | undefined,
+    estaLogado?: boolean
 }
 
-
-
-const CardJogo = ({titulo, descricao, img, preco, jogoId, onDelete, estaLogado}: Jogo) => {
+const CardJogo = ({titulo, img, preco, jogoId, onDelete, estaLogado}: Jogo) => {
     return (
         <article className={styles.card_jogo}>
             <Link href={"/detalhe/" + jogoId}>
-                <img src="/imgs/jogo.svg" alt=""
-                     className={styles.img_jogo} />
+                <img
+                    src={img}
+                    alt={titulo}
+                    className={styles.img_jogo}
+                />
             </Link>
+
             <div className={styles.campo_itens}>
-                <h3 className={styles.titulo_jogo}>Minecraft</h3>
-                <p className={styles.valor_jogo}>R$39,00</p>
-                <a href="/src/pages/detalhe" className={styles.linkDetalhes}>Detalhes</a>
-                {estaLogado &&(
+                <h3 className={styles.titulo_jogo}>
+                    {titulo}
+                </h3>
+
+                <p className={styles.valor_jogo}>
+                    R${preco}
+                </p>
+
+                <Link
+                    href={"/detalhe/" + jogoId}
+                    className={styles.linkDetalhes}
+                >
+                    Detalhes
+                </Link>
+
+                {estaLogado && (
                     <>
-                        <button onClick={() => onDelete(jogoId)}>
-                            <p className={styles.botoes_admin}>Excluir</p>
+                        <button onClick={() => onDelete ? onDelete(jogoId) : ''}>
+                            <p className={styles.botoes_admin}>
+                                Excluir
+                            </p>
                         </button>
+
                         <Link href={"/jogo?id=" + jogoId}>
-                            <p className={styles.botoes_admin}>Editar</p>
+                            <p className={styles.botoes_admin}>
+                                Editar
+                            </p>
                         </Link>
                     </>
                 )}
