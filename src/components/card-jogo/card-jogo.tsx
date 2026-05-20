@@ -17,14 +17,14 @@ type Jogo ={
 const CardJogo = ({titulo, descricao, img, preco, jogoId, onDelete, estaLogado}: Jogo) => {
     return (
         <article className={styles.card_jogo}>
-            <Link href={"/detalhe-jogo/" + jogoId}>
+            <Link href={"/detalhe/" + jogoId}>
                 <img src="/imgs/jogo.svg" alt=""
                      className={styles.img_jogo} />
             </Link>
             <div className={styles.campo_itens}>
                 <h3 className={styles.titulo_jogo}>Minecraft</h3>
                 <p className={styles.valor_jogo}>R$39,00</p>
-                <a href="/src/pages/detalhe-jogo" className={styles.linkDetalhes}>Detalhes</a>
+                <a href="/src/pages/detalhe" className={styles.linkDetalhes}>Detalhes</a>
                 {estaLogado &&(
                     <>
                         <button onClick={() => onDelete(jogoId)}>

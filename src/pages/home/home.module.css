@@ -62,10 +62,9 @@
 }
 
 .linha_jogos{
-    border: none;          /* Remove a borda padrão */
-    height: 2px;           /* Define a espessura */
-    background-color: rgba(255 42 42 / 0.62); /* Define a cor */
-    width: 50%;            /* Largura reduzida */
+    border: none;
+    background-color: rgba(255 42 42 / 0.62);
+    width: 50%;
     margin: 20px auto;
 }
 
@@ -75,3 +74,91 @@
 }
 
 
+.area_paginacao{
+    display: flex;
+    gap: 30px
+}
+
+.area_paginacao button{
+    width: 35px;
+    height: 35px;
+    border: 1px solid #570026;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+
+.card_curiosidade{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid var(--cinza);
+    padding: 15px;
+}
+.img_curiosidades{
+    display: flex;
+}
+
+
+.texto_final{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aba_pesquisar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   justify-content: center;
+    gap: 70px;
+    margin-bottom: 50px;
+}
+
+.pesquisar_botao{
+    display: flex;
+    max-width: 400px;
+    width: 100%;
+    background-color: var(--cinza);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+.pesquisar_botao::placeholder{
+    color: var(--branco);
+}
+
+.menor_preco_botao{
+    display: flex;
+    background-color: var(--cinza);
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 120px;
+    width: 100%;
+    color: var(--branco);
+}
+
+.menor_preco_botao:hover {
+    background-color: #474747;
+    border-color: #c22d2d;
+    color: #383838;
+}
+
+.categoria_botao{
+    display: flex;
+    background-color: var(--cinza);
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 120px;
+    width: 100%;
+    color: var(--branco);
+}
+
+.categoria_botao:hover{
+    background-color: #474747;
+    border-color: #c22d2d;
+    color: #383838;
+}

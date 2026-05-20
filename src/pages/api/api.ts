@@ -1,5 +1,4 @@
 import axios from "axios";
-import secureLocalStorage from "react-secure-storage";
 
 const apiLocal = "https://localhost:7057/api/";
 

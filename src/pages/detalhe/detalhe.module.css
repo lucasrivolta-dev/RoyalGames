@@ -1,0 +1,65 @@
+.parte_toda{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #7a7a7a;
+    margin: 0 auto;
+    padding: 1px 40px 40px 40px;
+    max-width: 90%;
+    min-height: 900px;
+}
+
+.parte_toda h1{
+    margin: 0;
+    margin-bottom: 60px;
+}
+
+.linha{
+    width: 100%;
+    border: 1px solid #7a7a7a;
+    margin: 0;
+}
+
+
+.container_descricao{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.texto_descricao{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    width: 25%;
+}
+
+.img_curiosidades{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.informacoes{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+}
+
+.informacoes_jogo{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+.informacoes_jogo h1{
+    font-size: 15px;
+}
+
