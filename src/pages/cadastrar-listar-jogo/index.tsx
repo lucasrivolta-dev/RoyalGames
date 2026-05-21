@@ -1,87 +1,364 @@
-import Header from "@/components/header/header";
-import Footer from "@/components/footer/footer";
-import styles from "./cadastrar-listar-jogo.module.css";
+import {useState} from "react";
 
-const CadastrarListarJogo = () => {
+import Footer from "@/components/footer/footer";
+import Header from "@/components/header/header";
+import ListaCatalogo from "../../components/lista-jogo/lista-jogo";
+
+import styles from "@/pages/cadastrar-listar-jogo/cadastrar-listar-jogo.module.css";
+
+import {api} from "../api/api";
+import {cadastrarJogo} from "@/pages/api/JogoService";
+
+const CadastroJogo = () => {
+
+    const [nome, setNome] = useState("");
+    const [preco, setPreco] = useState(0);
+
+    const [generoIds, setGenero] = useState<number[]>([]);
+    const [classificacaoID, setClassificacao] = useState<number>(0);
+    const [plataformaIds, setPlataforma] = useState<number[]>([]);
+
+    const [descricao, setDescricao] = useState("");
+
+    const [imagem, setImagem] = useState<File | null>(null);
+
+    const CadastrarJogo = async (
+        e: React.FormEvent<HTMLFormElement>
+    ) => {
+
+        e.preventDefault();
+
+        try {
+
+            const dados = {
+                nome,
+                preco,
+                generoIds,
+                descricao,
+                imagem,
+                plataformaIds,
+                classificacaoID,
+            }
+
+            console.log(dados);
+            await cadastrarJogo(dados);
+
+            alert(
+                "Jogo cadastrado com sucesso!"
+            );
+
+        } catch (error) {
+
+            console.log(error);
+
+            alert(
+                "Erro ao cadastrar jogo"
+            );
+        }
+    };
+
     return (
         <>
-            <Header />
+            <Header/>
 
-            <main id={styles.pagina_cadastro_jogos}>
+            <section id={styles.cadastro_jogo}>
 
-                <section className={styles.container_principal}>
+                <div className={`${styles.container_cadastro} layout_guide`}>
 
-                    <div className={styles.box_cadastro_jogo}>
+                    <div id={styles.cabecalho_cadastro}>
 
-                        <h1>Cadastrar novo jogo</h1>
+                        <h1>
+                            Cadastrar novo jogo
+                        </h1>
 
-                        <form className={styles.formulario_jogo}>
+                        <hr/>
 
-                            <div className={styles.coluna_inputs}>
+                    </div>
 
-                                <div className={styles.campo_formulario}>
-                                    <label>Nome</label>
-                                    <input type="text" />
+                    <form
+                        onSubmit={CadastrarJogo}
+                        id={styles.form_cadastro}
+                    >
+
+                        <div id={styles.area_cadastro_dados}>
+
+                            <div id={styles.parte_esquerda}>
+
+                                <div className={styles.campo}>
+
+                                    <label>
+                                        Nome
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        value={nome}
+                                        onChange={(e) =>
+                                            setNome(
+                                                e.target.value
+                                            )
+                                        }
+                                    />
+
                                 </div>
 
-                                <div className={styles.linha_campos}>
+                                <div className={styles.meio}>
 
-                                    <div className={styles.campo_formulario}>
-                                        <label>Valor</label>
-                                        <input type="text" />
+                                    <div className={styles.campo}>
+
+                                        <label>
+                                            Valor
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            value={preco}
+                                            onChange={(e) =>
+                                                setPreco(
+                                                    Number(
+                                                        e.target.value
+                                                    )
+                                                )
+                                            }
+                                        />
+
                                     </div>
 
-                                    <div className={styles.campo_formulario}>
-                                        <label>Gênero</label>
-                                        <input type="text" />
-                                    </div>
+                                    <div className={styles.campo}>
 
-                                    <div className={styles.campo_formulario}>
-                                        <label>Classificação Indicativa</label>
-                                        <input type="text" />
-                                    </div>
+                                        <label>
+                                            Gênero
+                                        </label>
 
-                                </div>
+                                        <select
+                                            value={generoIds}
+                                            onChange={(e) =>
+                                                // MUDAR PARA O MODO CORRETO SELECT
+                                                setGenero(
+                                                    Array.from(e.target.selectedOptions).map((options) => Number(options.value))
+                                                )
+                                            }
+                                        >
 
-                                <div className={styles.linha_campos}>
+                                            <option value="">
+                                                Selecione
+                                            </option>
 
-                                    <div className={styles.campo_formulario}>
-                                        <label>Plataforma</label>
+                                            <option value="1">
+                                                Ação
+                                            </option>
 
-                                        <select>
-                                            <option>Selecione</option>
+                                            <option value="2">
+                                                Aventura
+                                            </option>
+
+                                            <option value="3">
+                                                Tiro
+                                            </option>
+
                                         </select>
+
                                     </div>
 
-                                    <div className={styles.campo_formulario}>
-                                        <label>Imagem</label>
-                                        <input type="text" />
+                                    <div className={styles.campo}>
+
+                                        <label>
+                                            Classificação
+                                        </label>
+
+                                        <select
+                                            value={classificacaoID}
+                                            onChange={(e) =>
+
+                                                setClassificacao(
+                                                    Number(e.target.value)
+                                                )
+                                            }
+                                        >
+
+                                            <option value="">
+                                                Selecione
+                                            </option>
+
+                                            <option value="1">
+                                                18
+                                            </option>
+
+                                            <option value="2">
+                                                16
+                                            </option>
+
+                                            <option value="3">
+                                                12
+                                            </option>
+
+                                            <option value="4">
+                                                Livre
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <div className={styles.baixo}>
+
+                                    <div className={styles.campo}>
+
+                                        <label>
+                                            Plataforma
+                                        </label>
+
+                                        <select
+                                            value={plataformaIds}
+                                            onChange={(e) =>
+                                                // MUDAR PARA O MODO CORRETO SELECT
+                                                setPlataforma(
+                                                    Array.from(e.target.selectedOptions).map((options) => Number(options.value))
+                                                )
+                                            }
+                                        >
+
+                                            <option value="">
+                                                Selecione
+                                            </option>
+
+                                            <option value="1">
+                                                Playstation
+                                            </option>
+
+                                            <option value="2">
+                                                Xbox
+                                            </option>
+
+                                            <option value="3">
+                                                PC
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+                                    <div className={styles.campo}>
+
+                                        <label>
+                                            Imagem
+                                        </label>
+
+                                        <input
+                                            type="file"
+                                            onChange={(e) => {
+
+                                                if (
+                                                    e.target.files
+                                                ) {
+
+                                                    setImagem(
+                                                        e.target.files[0]
+                                                    );
+                                                }
+                                            }}
+                                        />
+
                                     </div>
 
                                 </div>
 
                             </div>
 
-                            <div className={styles.campo_descricao}>
-                                <label>Descrição</label>
-                                <textarea></textarea>
+                            <div id={styles.parte_direita}>
+
+                                <div className={styles.campo}>
+
+                                    <label>
+                                        Descrição
+                                    </label>
+
+                                    <textarea
+                                        value={descricao}
+                                        onChange={(e) =>
+                                            setDescricao(
+                                                e.target.value
+                                            )
+                                        }
+                                    ></textarea>
+
+                                </div>
+
                             </div>
 
-                        </form>
+                        </div>
 
-                        <button className={styles.botao_cadastrar_jogo}>
+                        <button type="submit">
                             Cadastrar
                         </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <div className={styles.container_jogo}>
+
+                <section
+                    className={styles.lista_jogos}
+                    id="catalogo"
+                >
+
+                    <div className={`${styles.container_lista} layout_guide`}>
+
+                        <div id={styles.cabecalho_lista}>
+
+                            <h2>
+                                Lista de Jogos
+                            </h2>
+
+                            <hr/>
+
+                        </div>
+
+                        <ListaCatalogo/>
 
                     </div>
 
                 </section>
 
-            </main>
+                <div className={styles.area_paginacao}>
 
-            <Footer />
+                    <button>
+                        {"<"}
+                    </button>
+
+                    <button>
+                        1
+                    </button>
+
+                    <button>
+                        2
+                    </button>
+
+                    <button>
+                        3
+                    </button>
+
+                    <button>
+                        4
+                    </button>
+
+                    <button>
+                        {">"}
+                    </button>
+
+                </div>
+
+            </div>
+
+            <Footer/>
+
         </>
     );
 };
 
-export default CadastrarListarJogo;
+export default CadastroJogo;

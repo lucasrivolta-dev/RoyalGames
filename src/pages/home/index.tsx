@@ -37,7 +37,7 @@ const Home = () => {
                         <hr className={styles.linha_jogos}/>
                 </div>
 
-                <section className={styles.lista_jogos}>
+                <section className={styles.lista_jogos} id="catalogo">
                     <div className={`${styles.container_catalogo} layout_guide`}>
                         <ListaJogo />
                     </div>

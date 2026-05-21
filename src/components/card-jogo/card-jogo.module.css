@@ -6,12 +6,14 @@
     box-shadow: 10px 10px 10px #221C2D ;
     font-family: var(--font-titulo);
     text-align: center;
-    height: 400px;
+    border: 2px solid rgba(221, 221, 221, 0.5);
+    padding: 20px;
+    height: 38vh;
 }
 
 .img_jogo {
     width: 100%;
-    height: 14vh;
+    height: 17vh;
     object-fit: cover;
     display: block;
     border-radius: 10px;
@@ -51,8 +53,33 @@
     font-family: var(--font-titulo);
 }
 
-.card_jogo{
-    border: 2px solid rgba(221, 221, 221, 0.5);
-    padding: 20px;
-    height: 24vh;
+
+.link {
+    display: flex;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--branco);
+    justify-content: center;
 }
+
+.link:hover {
+    color: #666666;
+    text-decoration: none;
+}
+
+.btn_icon{
+    background-color: var(--vermelho);
+    color: var(--branco);
+    border-radius: 8px;
+    padding: 7px 18px;
+    font-family: var(--font-padrao);
+}
+
+.btn_icon p{
+    background-color: var(--vermelho);
+    color: var(--branco);
+    padding: 2px 18px;
+    font-family: var(--font-padrao);
+}
+

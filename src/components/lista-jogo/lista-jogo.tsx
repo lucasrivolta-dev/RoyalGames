@@ -43,61 +43,25 @@ const ListaJogo = () => {
         }
     }
 
-    // function confirmarExclusao(jogoId: number) {
-    //
-    //     toastConfirmarExclusao(async () => {
-    //
-    //         try {
-    //
-    //             await excluirJogo(jogoId);
-    //
-    //             setJogos((listaAtual) =>
-    //                 listaAtual.map((jogo) =>
-    //                     jogo.jogoID === jogoId
-    //                         ? {...jogo, statusJogo: false}
-    //                         : jogo
-    //                 )
-    //             );
-    //
-    //             notificacao("Jogo inativado!");
-    //
-    //             listar();
-    //
-    //         } catch (error: any) {
-    //
-    //             console.log(error.message);
-    //
-    //         }
-    //     });
-    // }
-
     useEffect(() => {
         listar();
     }, []);
 
-    // const jogosFiltrados = jogos
-    //     .filter((jogo) =>
-    //         (jogo.nome || "")
-    //             .toLowerCase()
-    //             .includes(pesquisa.toLowerCase())
-    //     )
-    //     .sort((a, b) => {
-    //
-    //         if (ordem === "menor_valor") {
-    //             return a.preco - b.preco;
-    //         }
-    //
-    //         if (ordem === "maior_valor") {
-    //             return b.preco - a.preco;
-    //         }
-    //
-    //         return a.jogoID - b.jogoID;
-    //
-    //     });
 
     return (
         <>
+            <div className={styles.container_jogos}>
+
             <div id={styles.botoes_home}>
+
+
+                <div className={styles.containerPesquisa}>
+                    <input
+                        type="text"
+                        placeholder="Pesquisar jogo..."
+                        className={styles.inputPesquisa}
+                    />
+                </div>
 
                 <select
                     className={styles.botao}
@@ -109,24 +73,33 @@ const ListaJogo = () => {
                     <option value="maior_valor">Maior valor</option>
                 </select>
 
-                <div>
+                <select
+                    className={styles.botao}
+                    value={ordem}
+                    onChange={(e) => setOrdem(e.target.value)}
+                >
+                    <option value="">Escolha um gênero</option>
 
-                    <label htmlFor="pesquisa">
-                        Pesquise
-                    </label>
-
-                    <input
-                        type="text"
-                        name="pesquisa"
-                        id="pesquisa"
-                        placeholder="Digite o nome do jogo"
-                        value={pesquisa}
-                        onChange={(e) =>
-                            setPesquisa(e.target.value)
-                        }
-                    />
-
-                </div>
+                    <option value="Acao">Ação</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="RPG">RPG</option>
+                    <option value="MundoAberto">Mundo Aberto</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Sobrevivencia">Sobrevivência</option>
+                    <option value="FPS">FPS</option>
+                    <option value="BattleRoyale">Battle Royale</option>
+                    <option value="Corrida">Corrida</option>
+                    <option value="Esporte">Esporte</option>
+                    <option value="Estrategia">Estratégia</option>
+                    <option value="Simulacao">Simulação</option>
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="HackAndSlash">Hack and Slash</option>
+                    <option value="SoulsLike">Souls Like</option>
+                    <option value="Indie">Indie</option>
+                    <option value="Retro">Retrô</option>
+                    <option value="Cooperativo">Cooperativo</option>
+                    <option value="Multiplayer">Multiplayer</option>
+                </select>
 
                 {estaAutenticado && (
                     <div id={styles.botoes_direita}>
@@ -147,7 +120,7 @@ const ListaJogo = () => {
                 {jogos.length > 0 ? jogos.map((item) => (
                     <CardJogo
                         key={item.jogoID}
-                        jogoId={item.jogoID}
+                        jogoID={item.jogoID}
                         nome={item.nome}
                         preco={item.preco}
                         imagemUrl={item.imagemUrl}
@@ -155,6 +128,7 @@ const ListaJogo = () => {
                 )) : (
                     <p>Carregando jogos.</p>
                 )}
+            </div>
             </div>
         </>
     )

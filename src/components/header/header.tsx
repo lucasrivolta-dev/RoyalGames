@@ -16,12 +16,14 @@ const Header = () => {
 
 
                 <div className={styles.menu}>
-                <Link href="/Catalogo" className={styles.link}>
-                    <p>Catálogo</p>
+                <Link href="#catalogo" className={styles.link}>
+                    <p>Catalogo</p>
                 </Link>
 
                 <button className={styles.btn_icon} onClick={redirect}>
+                    <Link href="/login" className={styles.link}>
                     <p>Login</p>
+                        </Link>
                 </button>
                 </div>
             </div>

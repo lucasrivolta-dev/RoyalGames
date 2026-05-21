@@ -5,10 +5,10 @@ type JogoFormulario = {
     nome: string,
     descricao: string,
     preco: number,
-    imagens: File | null,
-    classificacaoIndicativaIds: number[]
-    generoIds: number[]
-    plataformaIds: number[]
+    imagem: File | null,
+    classificacaoID: number,
+    generoIds: number[],
+    plataformaIds: number[],
 }
 
 interface JogoListagem{
@@ -29,17 +29,19 @@ export async function cadastrarJogo(dados: JogoFormulario){
         formData.append("nome", dados.nome);
         formData.append("descricao", dados.descricao);
         formData.append("preco", dados.preco.toString());
-        if(dados.imagens){
-            formData.append("imagens", dados.imagens);
-        }
+        if(dados.imagem){
+            formData.append("imagem", dados.imagem);
+        };
 
         dados.generoIds.forEach((id) => {
             formData.append("generoIds", id.toString());
-        })
+        });
 
-        dados.classificacaoIndicativaIds.forEach((id) => {
-            formData.append("classificacaoIndicativaIds", id.toString())
-        })
+        formData.append("classificacaoID", dados.classificacaoID.toString());
+
+        dados.plataformaIds.forEach((id) => {
+            formData.append("plataformaIds", id.toString());
+        });
 
         await api.post("Jogo", formData);
     }catch(error:any){
@@ -62,7 +64,7 @@ export async function listarJogo(){
             imagemUrl: `${api.defaults.baseURL}${jogo.imagemUrl}`
         }));
 
-        return response.data;
+        return jogos;
     }catch(error:any){
         throw new Error(error.response.data);
     }
@@ -74,7 +76,7 @@ export async function listarPorId(id: number){
 
         const jogos = {
             ...response.data,
-            imagemUrl: `${api.defaults.baseURL}${response.data.imagens}`
+            imagemUrl: `${api.defaults.baseURL}${response.data.imagemUrl}`
         };
 
         return jogos;

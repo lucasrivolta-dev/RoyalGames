@@ -1,28 +1,45 @@
-import styles from "./card-jogo.module.css"
+import styles from "./card-jogo.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
-
-type Jogo ={
+type Jogo = {
     titulo: string;
-    img: string;
-    preco: number,
-    jogoId: number,
-    onDelete?: (jogoId: number) => void | undefined,
-    estaLogado?: boolean
-}
+    imagemUrl: string;
+    preco: number;
+    jogoId: number;
+    onDelete?: (jogoId: number) => void;
+    estaLogado?: boolean;
+};
 
-const CardJogo = ({titulo, img, preco, jogoId, onDelete, estaLogado}: Jogo) => {
+const CardJogo = ({
+                      titulo,
+                      imagemUrl,
+                      preco,
+                      jogoId,
+                      onDelete,
+                      estaLogado
+                  }: Jogo) => {
+
+    const router = useRouter();
+
+    const redirect = () => {
+        router.push("/detalhe/");
+    };
+
     return (
         <article className={styles.card_jogo}>
-            <Link href={"/detalhe/" + jogoId}>
+
+            <Link href={"/detalhe/"}>
                 <img
-                    src={img}
+                    src={imagemUrl}
                     alt={titulo}
                     className={styles.img_jogo}
                 />
             </Link>
 
             <div className={styles.campo_itens}>
+
                 <h3 className={styles.titulo_jogo}>
                     {titulo}
                 </h3>
@@ -31,16 +48,17 @@ const CardJogo = ({titulo, img, preco, jogoId, onDelete, estaLogado}: Jogo) => {
                     R${preco}
                 </p>
 
-                <Link
-                    href={"/detalhe/" + jogoId}
-                    className={styles.linkDetalhes}
-                >
-                    Detalhes
-                </Link>
+                <button className={styles.btn_icon} onClick={redirect}>
+                    <Link href="/detalhe" className={styles.link}>
+                        <p>Detalhes</p>
+                    </Link>
+                </button>
 
                 {estaLogado && (
                     <>
-                        <button onClick={() => onDelete ? onDelete(jogoId) : ''}>
+                        <button
+                            onClick={() => onDelete?.(jogoId)}
+                        >
                             <p className={styles.botoes_admin}>
                                 Excluir
                             </p>
@@ -53,13 +71,11 @@ const CardJogo = ({titulo, img, preco, jogoId, onDelete, estaLogado}: Jogo) => {
                         </Link>
                     </>
                 )}
+
             </div>
+
         </article>
-
-
-
-
-    )
-}
+    );
+};
 
 export default CardJogo;

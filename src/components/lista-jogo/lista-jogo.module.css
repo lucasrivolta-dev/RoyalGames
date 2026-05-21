@@ -1,0 +1,44 @@
+.botao{
+    display: flex;
+    background: var(--cinza);
+    border-radius: 5px;
+    color: var(--branco);
+}
+
+#cards_jogos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-height: 500px;
+    gap: 20px;
+}
+
+#botoes_home{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+
+.container_jogo{
+    display: flex;
+    flex-direction: column;
+}
+
+.botaoPesquisa{
+    display: flex;
+    background: var(--cinza);
+    color: var(--branco);
+}
+
+.inputPesquisa{
+    display: flex;
+    background: var(--cinza);
+    width: 60%;
+    border-radius: 5px;
+    color: var(--branco);
+}
+
+
+.containerPesquisa{
+    display: flex;
+    width: 60%;
+}

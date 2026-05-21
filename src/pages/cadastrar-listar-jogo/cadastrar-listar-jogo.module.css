@@ -1,0 +1,210 @@
+#cadastro_jogo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    background: radial-gradient( ellipse 150% 60% at left,  #523BFF -500%, #221C2D 90%);
+}
+
+.container_cadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 6px;
+    padding: 3% 0px;
+    box-shadow: rgb(22, 6, 44) 1px 1px 30px 5px inset, rgb(255, 255, 255) -5px -5px 10px -4px inset;
+    gap: 40px;
+    background-color: transparent;
+}
+
+#cabecalho_cadastro{
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-titulo);
+    width: fit-content;
+    align-items: center;
+    gap: 5px;
+    background-color: transparent;
+}
+
+#cabecalho_cadastro h1{
+    color: var(--branco);
+    font-size: 2.5rem;
+    background-color: transparent;
+}
+
+#cabecalho_cadastro hr{
+    border: 1px solid var(--vermelho);
+    width: 120%;
+}
+
+#form_cadastro{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    font-family: var(--font-padrao);
+    background-color: transparent;
+    align-items: center;
+    gap: 50px;
+}
+
+#area_cadastro_dados{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    background-color: transparent;
+}
+
+#area_cadastro_dados label{
+    background-color: transparent;
+}
+
+#parte_esquerda{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 10px;
+    background-color: transparent;
+}
+
+.meio{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: transparent;
+}
+
+.meio div{
+    width: 50%;
+}
+
+.baixo{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: transparent;
+}
+
+.baixo div{
+    width: 50%;
+}
+
+#parte_direita{
+    display: flex;
+    flex-direction: column;
+    width: 38%;
+    background-color: transparent;
+}
+
+#parte_direita div{
+    height: 100%;
+    background-color: transparent;
+}
+
+#parte_direita textarea{
+    background-color: var(--fundo-escuro);
+    border: none;
+    border-radius: 6px;
+    height: 100%;
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.campo select{
+    background-color: var(--fundo-escuro);
+    outline-color: var(--vermelho);
+    border: none;
+    height: 50px;
+    border-radius: 6px;
+    font-family: var(--font-padrao);
+    font-size: 1rem;
+}
+
+#form_cadastro input{
+    height: 50px;
+    background-color: var(--fundo-escuro);
+    border-radius: 6px;
+    border: none;
+    outline-color: var(--vermelho);
+    font-family: var(--font-padrao);
+    font-size: 1rem;
+    padding-left: 15px;
+    color: var(--branco);
+}
+
+#form_cadastro button{
+    width: 200px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid var(--vermelho);
+    border-radius: 10px;
+    font-family: var(--font-padrao);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#form_cadastro button:hover{
+    background-color: var(--vermelho);
+}
+
+/* **********************LISTA DE JOGOS******************************** */
+#lista_jogos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5% 0px;
+    background: radial-gradient( ellipse 150% 60% at left,  #523BFF -500%, #221C2D 90%);
+}
+
+.container_lista{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    background-color: transparent;
+}
+
+#cabecalho_lista{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    gap: 5px;
+}
+
+#cabecalho_lista h2{
+    font-family: var(--font-titulo);
+    color: var(--branco);
+    font-size: 2rem;
+}
+
+#cabecalho_lista hr{
+    border: 1px solid var(--vermelho);
+    width: 120%;
+}
+
+.area_paginacao{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.area_paginacao button{
+    width: 35px;
+    height: 35px;
+    border: 1px solid #570026;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.container_jogo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
